@@ -206,9 +206,8 @@ class DocxTemplate(object):
                     + "{% endif %}"
                     + m1.group(4)  # ``</w:t>``.
                 )
-
             return re.sub(
-                r"(</w:tcPr[ >].*?<w:t(?:.*?)>)(.*?)(?:{%\s*vm\s*%})(.*?)(</w:t>)",
+                r"(</?w:tcPr[/ >].*?<w:t(?:.*?)>)(.*?)(?:{%\s*vm\s*%})(.*?)(</w:t>)",
                 v_merge,
                 m.group(),  # Everything between ``</w:tc>`` and ``</w:tc>`` with ``{% vm %}`` inside.
                 flags=re.DOTALL,
